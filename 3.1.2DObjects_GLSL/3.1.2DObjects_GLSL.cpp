@@ -66,7 +66,7 @@ void draw_axes(void) {
 	glDrawArrays(GL_LINES, 0, 4);
 	glBindVertexArray(0);
 }
-
+zz
 GLfloat line[2][2];
 GLfloat line_color[3] = { 1.0f, 0.0f, 0.0f };
 GLuint VBO_line, VAO_line;
