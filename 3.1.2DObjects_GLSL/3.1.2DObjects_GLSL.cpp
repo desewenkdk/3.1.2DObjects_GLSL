@@ -689,7 +689,7 @@ int leftbuttonpressed;
 void mouse(int button, int state, int x, int y) {
 	if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN)) {
 		leftbuttonpressed = 1;
-		click_shot_house();
+		//click_shot_house();
 	}
 	else if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_UP))
 		leftbuttonpressed = 0;
@@ -698,7 +698,16 @@ void click_shot_house() {
 	int i;
 	float x, y;
 	glm::mat4 ModelMatrix;
-	ModelMatrix
+	//ModelMatrix
+}
+
+void idle() {
+	int speed = 1;
+	centerx += speed * 0.025f;
+	if (centerx > win_height) {
+		speed *= -1;
+	}
+	glutPostRedisplay();
 }
 
 void reshape(int width, int height) {
@@ -730,8 +739,10 @@ void register_callbacks(void) {
 	glutDisplayFunc(display);
 	glutKeyboardFunc(keyboard);
 	glutMouseFunc(mouse);
+	glutIdleFunc(idle);
 	glutReshapeFunc(reshape);
 	glutCloseFunc(cleanup);
+
 }
 
 void prepare_shader_program(void) {
@@ -812,7 +823,7 @@ void main(int argc, char *argv[]) {
 	};
 
 	glutInit (&argc, argv);
- 	glutInitDisplayMode(GLUT_RGBA | GLUT_MULTISAMPLE);
+ 	glutInitDisplayMode(GLUT_RGBA | GLUT_MULTISAMPLE | GLUT_DOUBLE);
 	glutInitWindowSize (1200, 300);
 	glutInitContextVersion(4, 0);
 	glutInitContextProfile(GLUT_CORE_PROFILE);
