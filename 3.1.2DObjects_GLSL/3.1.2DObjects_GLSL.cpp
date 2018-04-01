@@ -66,7 +66,6 @@ void draw_axes(void) {
 	glDrawArrays(GL_LINES, 0, 4);
 	glBindVertexArray(0);
 }
-zz
 GLfloat line[2][2];
 GLfloat line_color[3] = { 1.0f, 0.0f, 0.0f };
 GLuint VBO_line, VAO_line;
@@ -690,13 +689,16 @@ int leftbuttonpressed;
 void mouse(int button, int state, int x, int y) {
 	if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN)) {
 		leftbuttonpressed = 1;
-		
+		click_shot_house();
 	}
 	else if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_UP))
 		leftbuttonpressed = 0;
 }
-void click_rotate_house() {
-	
+void click_shot_house() {
+	int i;
+	float x, y;
+	glm::mat4 ModelMatrix;
+	ModelMatrix
 }
 
 void reshape(int width, int height) {
