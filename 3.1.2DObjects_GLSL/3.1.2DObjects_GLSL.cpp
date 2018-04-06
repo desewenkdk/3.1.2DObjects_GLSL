@@ -677,6 +677,19 @@ void display(void) {
 	glutSwapBuffers();
 }   
 
+void display_movCar2() {
+	glm::mat4 ModelMatrix;
+
+	glClear(GL_COLOR_BUFFER_BIT);
+
+	ModelViewProjectionMatrix = ViewProjectionMatrix * ModelMatrix;
+	glUniformMatrix4fv(loc_ModelViewProjectionMatrix, 1, GL_FALSE, &ModelViewProjectionMatrix[0][0]);
+
+	glPushMatrix();
+	ModelMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(10.0f, 0.0f, 0.0f));
+	
+}
+
 void keyboard(unsigned char key, int x, int y) {
 	switch (key) {
 	case 27: // ESC key
@@ -694,17 +707,11 @@ void mouse(int button, int state, int x, int y) {
 	else if ((button == GLUT_LEFT_BUTTON) && (state == GLUT_UP))
 		leftbuttonpressed = 0;
 }
-void click_shot_house() {
-	int i;
-	float x, y;
-	glm::mat4 ModelMatrix;
-	//ModelMatrix
-}
 
 void idle() {
 	int speed = 1;
-	centerx += speed * 0.025f;
-	if (centerx > win_height) {
+	
+	if (rotate_angle > ) {
 		speed *= -1;
 	}
 	glutPostRedisplay();
